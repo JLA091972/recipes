@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Display Recipe</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="/displayrecipe" method="post">
+            <div class="row">
+                <h1>Welcome {{session.first_name}} {{session.last_name}}</h1>
+                <div class="col">
+
+                    <h3>{{session.recipe_name}}</h3>
+                </div>
+                <div class="col">
+                    <div class="recipemenu">
+                        <a href="/recipes">Back to Recipes</a> &nbsp &nbsp
+                        <a href="/logout">Logout</a>
+                    </div>
+                    <h6>
+                        Posted by: {{recipe.first_name}} {{recipe.last_name}}
+                    </h6>
+                </div>
+            </div>
+
+            <div class="recipedisplay">
+                <p>Description: {{recipe.recipe_description}}</p>
+                
+                <p>Under 30 Minutes: 
+                    {% if recipe.under_30mins == 1 %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </p>
+                <p>Instructions: {{recipe.recipe_instructions}}</p>
+                <p>Date Made: {{recipe.cooked_date}}</p>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
