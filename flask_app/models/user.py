@@ -47,7 +47,7 @@ class User:
     def create_new_user(cls, data):
         query = "INSERT INTO users (first_name, last_name, email, password) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"
         print ("!!!!!!!!!!!",query)
-        connectToMySQL(DATABASE).query_db(query, data)
+        return connectToMySQL(DATABASE).query_db(query, data)
 
     # check and verify, query db if email entered in the login form exists in db
     @classmethod
